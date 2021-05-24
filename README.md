@@ -2,32 +2,38 @@
 
 Utility scripts for COCO json annotation format
 
-## Utility Tools
+## Install
 
-### Merge
+`cocojson` package can be installed through `pip3 install -e .` (editable install) or `pip3 install .`
+
+## Usage
+
+### Utility Tools
+
+#### Merge
 
 ```python
 python3 -m cocojson.merge_coco
 ```
 
-### Sample
+#### Sample
 
 ```python
 python3 -m cocojson.sample_coco
 ```
 
-## Converters
+### Converters
 
-### CVAT XML to COCO
+#### CVAT XML to COCO
 
-#### CVAT Image XML
-
-TODO
-
-#### CVAT Video XML
+##### CVAT Image XML
 
 TODO
 
-### COCO to Darknet
+##### CVAT Video XML
+
+TODO
+
+#### COCO to Darknet
 
 TODO
