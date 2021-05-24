@@ -9,5 +9,5 @@ setup(
     author='levan',
     author_email='lingevan0208@gmail.com',
     url='https://github.com/levan92/cocojson',
-    packages=find_packages()
+    packages=find_packages(exclude=('docs',))
 )
