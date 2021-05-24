@@ -1,6 +1,6 @@
 # Sample
 
-Samples k images from a dataset
+Samples `k` images from a dataset and outputs a new dataset. Useful for experimentation with a "lite" dataset.
 
 Expected format of 1 x Dataset:
     - 1 x json file 
