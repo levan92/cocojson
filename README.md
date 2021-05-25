@@ -22,9 +22,11 @@ python3 -m cocojson.run.merge -h
 python3 -m cocojson.run.sample -h
 ```
 
-#### Visualise
+#### [Visualise] (./docs/viz.md)
 
-_TODO_
+```python
+python3 -m cocojson.run.viz -h
+```
 
 ### Converters
 
