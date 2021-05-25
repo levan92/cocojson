@@ -52,8 +52,6 @@
 
 ## Images
 
-Complete list of all relevant images (whether positive or negative)
-
 ```
 {
     "images":[
@@ -67,6 +65,8 @@ Complete list of all relevant images (whether positive or negative)
     ]
 }
 ```
+
+This should be a complete list of all relevant images (whether positive or negative)
 
 `file_name` has conventionally been a file name, but over here we defined it as a subpath so that we are flexible with the folder organisation structure and naming format within the root image directory.  
 
