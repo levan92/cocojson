@@ -24,7 +24,14 @@ def draw_text(img, lb, annot, font=cv2.FONT_HERSHEY_DUPLEX, fontScale=1.0, color
         iscrowd = annot['iscrowd']
     except KeyError:
         iscrowd = None
+    try:
+        tid = annot['attributes']['track_id']
+    except KeyError:
+        tid = None
+
     text = f"{cat_id}"
+    if tid is not None:
+        text += f';t{tid}'
     if occluded:
         text += ';oc'
     if iscrowd:
