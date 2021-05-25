@@ -13,13 +13,13 @@ Utility scripts for COCO json annotation format
 #### [Merge](./docs/merge.md)
 
 ```python
-python3 -m cocojson.merge_coco -h
+python3 -m cocojson.run.merge -h
 ```
 
 #### [Sample](./docs/sample.md)
 
 ```python
-python3 -m cocojson.sample_coco -h
+python3 -m cocojson.run.sample -h
 ```
 
 ### Converters
