@@ -3,6 +3,9 @@ from shutil import copy
 from pathlib import Path
 from collections import defaultdict
 
+IMG_EXTS = ['.jpg','.jpeg','.png','.tiff','.tif','.bmp','.gif','.webp']
+IMG_EXTS = [x.lower() for x in IMG_EXTS] + [x.upper() for x in IMG_EXTS]
+
 def read_json(json_path):
     with open(json_path, 'r') as f:
         d = json.load(f)    
@@ -11,6 +14,7 @@ def read_json(json_path):
 def write_json(json_path, dic):
     with open(json_path, 'w') as f:
         json.dump(dic, f)    
+    print(f'Wrote json to {json_path}')
 
 def path(str_path, is_dir=False):
     path_ = Path(str_path)
@@ -61,3 +65,6 @@ def read_coco_json(coco_json):
     coco_dict = read_json(coco_json)
     setname = get_setname(coco_dict, coco_json)
     return coco_dict, setname
+
+def get_imgs_from_dir(dirpath):
+    return sorted([ img for img in dirpath.rglob('*') if img.is_file() and img.suffix in IMG_EXTS ])
