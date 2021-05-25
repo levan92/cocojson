@@ -4,7 +4,7 @@ from random import sample
 from tqdm import tqdm
 import cv2
 
-from cocojson.utils.common import path, read_coco_json, get_img2annots, get_setname, get_flatten_name
+from cocojson.utils.common import path, read_coco_json, get_img2annots, get_flatten_name
 from cocojson.utils.draw import draw_annot
 
 def viz(json, root, outdir=None, sample_k=None, show=False):
