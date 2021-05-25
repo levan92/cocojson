@@ -7,7 +7,7 @@ Expected format of 1 x Dataset:
 - 1 x Image Folder (to get to the image, path is assumed to be "Image Folder"/"file_name" given in json)
 
 
-```python
+```bash
 python3 -m cocojson.sample_coco -h
 ```
 

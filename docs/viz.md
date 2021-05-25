@@ -9,7 +9,7 @@ Options:
 - Show instantly (imshow, through `--show`) 
 - Sampling (through `--sample`)
 
-```python
+```bash
 python3 -m cocojson.run.viz -h
 ```
 

@@ -15,7 +15,7 @@ Merged Dataset:
 
 Only given category IDs for each dataset will be merged. Merged category list will merge constituent categories based on category name.
 
-```python
+```bash
 python3 -m cocojson.merge_coco -h
 ```
 
