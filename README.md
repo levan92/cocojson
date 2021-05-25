@@ -8,6 +8,10 @@ Utility scripts for COCO json annotation format
 
 ## Usage
 
+### COCO Eval
+
+Please use https://github.com/levan92/cocoapi. 
+
 ### Utility Tools
 
 #### [Merge](./docs/merge.md)
