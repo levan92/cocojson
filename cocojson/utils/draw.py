@@ -2,9 +2,9 @@ import cv2
 
 from .common import get_ltrbwh
 
-BUFFER=0
+BUFFER=2
 
-def draw_annot(img, annot, color=(255,255,0), thickness=1, font=cv2.FONT_HERSHEY_DUPLEX, fontScale=0.5):
+def draw_annot(img, annot, color=(255,255,0), thickness=1, font=cv2.FONT_HERSHEY_DUPLEX, fontScale=1.0):
     l,t,r,b = get_ltrbwh(annot['bbox'])[:4]
     draw_bb(img, [l,t,r,b], color=color, thickness=thickness)
     draw_text(img, [l,b], annot, font=font, fontScale=fontScale, color=color, thickness=thickness)
@@ -13,7 +13,7 @@ def draw_bb(img, ltrb, color=(255,255,0), thickness=1):
     l,t,r,b = ltrb
     cv2.rectangle(img, (l,t), (r,b), color=color, thickness=thickness)
 
-def draw_text(img, lb, annot, font=cv2.FONT_HERSHEY_DUPLEX, fontScale=0.5, color=(255,255,0), thickness=1.0):
+def draw_text(img, lb, annot, font=cv2.FONT_HERSHEY_DUPLEX, fontScale=1.0, color=(255,255,0), thickness=1.0):
     l,b = lb
     cat_id = annot['category_id']
     try:
