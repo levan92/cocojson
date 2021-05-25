@@ -1,6 +1,6 @@
 # cocojson
 
-Utility scripts for COCO json annotation format
+Utility scripts for COCO json annotation format. The COCO Format is defined [here](./docs/coco.md).
 
 ## Install
 
@@ -22,7 +22,7 @@ python3 -m cocojson.run.merge -h
 python3 -m cocojson.run.sample -h
 ```
 
-#### [Visualise] (./docs/viz.md)
+#### [Visualise](./docs/viz.md)
 
 ```python
 python3 -m cocojson.run.viz -h
