@@ -56,3 +56,8 @@ def get_flatten_name(subpath):
     elems = [ d.stem for d in subpath.parents if d.stem ][::-1]
     elems.append(subpath.stem)
     return '_'.join(elems)
+
+def read_coco_json(coco_json):
+    coco_dict = read_json(coco_json)
+    setname = get_setname(coco_dict, coco_json)
+    return coco_dict, setname

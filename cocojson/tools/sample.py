@@ -10,14 +10,11 @@ from pathlib import Path
 from shutil import copy
 from random import sample
 
-from cocojson.utils import read_json, write_json
+from cocojson.utils.common import read_json, write_json, path
 
 def sample(json_path, imgroot, outdir, k=10):
-    json_path = Path(json_path)
-    assert json_path.is_file(),json_path
-
-    imgroot_path = Path(imgroot)
-    assert imgroot_path.is_dir(),imgroot_path
+    json_path = path(json_path)
+    imgroot_path = path(imgroot, is_dir=True)
 
     outdir = Path(outdir)
     outroot_path = outdir / 'images'

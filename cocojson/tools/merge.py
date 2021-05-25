@@ -18,7 +18,7 @@ Only given category IDs for each dataset will be merged. Merged category list wi
 from pathlib import Path
 from datetime import date
 
-from cocojson.utils import read_json, write_json, assure_copy
+from cocojson.utils.common import read_coco_json, write_json, assure_copy
 
 def merge_cats_get_id(cats, this_cat):
     for cat in cats:
@@ -41,15 +41,7 @@ def merge(jsons, img_roots, cids, output_dir, outname='merged'):
     merged_dict = {'info': {'description':'','data_created':f'{date.today():%Y/%m/%d}'}, 'annotations': [], 'categories': [], 'images': []}
     merged_names = []
     for i, (json_path, images_dir_path, cids_to_merge) in enumerate(zip(jsons, img_roots, cids)):
-        cocodict = read_json(json_path)
-
-        try:
-            set_name = cocodict['info']['description']
-            print(f'Merging {set_name} (name from json info description)')
-        except KeyError:
-            json_path_p = Path(json_path)
-            set_name = f'{json_path_p.parent.stem}_{json_path_p.stem}'
-            print(f'Merging {set_name} (name derived from json path)')
+        cocodict, set_name = read_coco_json(json_path)
         merged_names.append(set_name)
 
         catid_old2new = {}
