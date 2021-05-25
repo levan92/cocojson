@@ -39,3 +39,9 @@ Typical usage: merge_coco.py \
 -o <path_to_output_dataset>
 Categories will be merged by category name
 ```
+
+## Examples
+
+```bash
+python3 -m cocojson.run.merge -r test_datasets/datasetA/images/ -j test_datasets/datasetA/val.json -c 1 -r test_datasets/datasetB/images/ -j test_datasets/datasetB/val.json -c 1 -r test_datasets/datasetC/images/ -j test_datasets/datasetC/val.json -c 2 -r test_datasets/datasetD/images/ -j test_datasets/datasetD/val.json -c 3 -o test_datasets/merged/
+```
