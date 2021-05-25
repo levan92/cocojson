@@ -1,12 +1,12 @@
 # The COCO JSON Format
 
-```json
+```
 {
     "info": {
-        ... this is optional, but some fields good to have
+        ...  optional, but some fields good to have
     },
     "licenses": [
-        ... this is optional
+        ... optional
     ],
     "categories": [
         ...
@@ -22,7 +22,7 @@
 
 ## Info
 
-```json
+```
 {
     "info": {
         "year": ...,
@@ -37,7 +37,7 @@
 
 ## Categories
 
-```json
+```
 {
     "categories":[
         {
@@ -54,7 +54,7 @@
 
 Complete list of all relevant images (whether positive or negative)
 
-```json
+```
 {
     "images":[
         {
@@ -74,7 +74,7 @@ Complete list of all relevant images (whether positive or negative)
 
 Complete list of all relevant images (whether positive or negative)
 
-```json
+```
 {
     "annotations":[
         {
