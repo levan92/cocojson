@@ -1,10 +1,10 @@
 # Sample
 
-Samples k images from a dataset
+Samples `k` images from a dataset and uses that to build a new dataset. Useful for experimentation with a "lite" dataset.
 
 Expected format of 1 x Dataset:
-    - 1 x json file 
-    - 1 x Image Folder (to get to the image, path is assumed to be "Image Folder"/"file_name" given in json)
+- 1 x json file 
+- 1 x Image Folder (to get to the image, path is assumed to be "Image Folder"/"file_name" given in json)
 
 
 ```python
