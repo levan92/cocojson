@@ -2,6 +2,8 @@
 
 Converts CVAT Video XML to COCO JSON while preserving track information.
 
+## Usage
+
 ```bash
 python3 -m cocojson.run.cvatvid2coco -h
 ```

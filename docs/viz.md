@@ -13,6 +13,8 @@ Options:
 python3 -m cocojson.run.viz -h
 ```
 
+## Usage
+
 ```
 usage: viz.py [-h] [--outdir [OUTDIR]] [--sample SAMPLE] [--show] json imgroot
 
