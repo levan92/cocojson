@@ -48,9 +48,7 @@ python3 -m cocojson.run.map_cat -h
 
 ### Converters
 
-#### CVAT XML to COCO
-
-##### [CVAT Video XML](./docs/cvatvid2coco.md)
+#### [CVAT Video XML to COCO](./docs/cvatvid2coco.md)
 
 Convert CVAT Video XML to COCO JSON whilst preserving track information.
 
@@ -58,7 +56,7 @@ Convert CVAT Video XML to COCO JSON whilst preserving track information.
 python3 -m cocojson.run.cvatvid2coco -h
 ```
 
-##### CVAT Image XML
+#### CVAT Image XML to COCO
 
 _TODO_
 
