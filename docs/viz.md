@@ -1,6 +1,8 @@
 # Visualise
 
-Visualise annotations onto images. Best used for sanity check.
+Visualise annotations onto images. Best used for sanity check. 
+
+Category id is written on the bounding box. Also, track id (t*), occlusion flag (oc) and iscrowd flag (cr) will be written if applicable/true  
 
 Options:
 - Write out to directory (through `--outdir`)
