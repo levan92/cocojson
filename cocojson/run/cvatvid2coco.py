@@ -1,6 +1,6 @@
 import argparse
 
-from cocojson.converters.cvatvid2coco import convert
+from cocojson.convert.cvatvid2coco import convert
 
 def main():
     ap = argparse.ArgumentParser()
