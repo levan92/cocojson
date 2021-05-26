@@ -6,16 +6,17 @@ Mapping categories to a new dataset. Usually used for converting annotation labe
 - Mapping is also defined in another json file, a dict of old label names to new label names. Multiple old label names can map to same new label name.
 
     For example:
-    '''json
-       {
-            "child": "human",
-            "adult": "human",
-            "chihuahua" : "dog",
-            "bulldog": "dog",
-        }
-    '''
+    
+           {
+                "child": "human",
+                "adult": "human",
+                "chihuahua" : "dog",
+                "bulldog": "dog",
+            }
 
 - By default, any old label names not given in mapping will be taken out in the new dataset along with associated annotations. To preserve old label names in the new dataset, please flag `keep_old`. 
+
+## Usage
 
 ```bash
 python3 -m cocojson.run.map_cat -h
