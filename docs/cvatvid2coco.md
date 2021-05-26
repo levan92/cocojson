@@ -22,5 +22,5 @@ optional arguments:
 ## Examples
 
 ```bash
-python3 -m cocojson.run.cvatvid2coco /media/dh/HDD/cute_kittens_puppies/cvat_dump/task_catdog-2021_05_25_07_16_22-cvatforvideo1.1/annotations.xml /media/dh/HDD/cute_kittens_puppies/smaller_set
+python3 -m cocojson.run.cvatvid2coco /data/kitty_pups/cvat_dump/task_cvatforvideo/annotations.xml /data/kitty_pups/smaller_set
 ```

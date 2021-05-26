@@ -1,6 +1,6 @@
 # Visualise
 
-Visualise annotations from a coco json dataset. 
+Visualise annotations onto images. Best used for sanity check.
 
 Options:
 - Write out to directory (through `--outdir`)
