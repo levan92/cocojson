@@ -1,3 +1,8 @@
+'''
+Visualise annotations from a coco json dataset. 
+
+'''
+
 from pathlib import Path
 from random import sample
 
