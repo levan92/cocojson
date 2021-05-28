@@ -39,6 +39,8 @@ head_attr{
     journal={arXiv preprint arXiv:1805.00123},
     year={2018}
 }
+
+Code adapted from https://github.com/hasanirtiza/Pedestron/blob/master/tools/convert_datasets/crowdhuman/convert_crowdhuman_to_coco.py
 '''
 import json
 from pathlib import Path
