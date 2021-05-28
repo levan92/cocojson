@@ -4,6 +4,7 @@ Convert from CVAT Video XML to COCO JSON (with track info intact)
 
 import xml.etree.ElementTree as ET
 from datetime import datetime, date
+from pathlib import Path
 
 from PIL import Image
 from tqdm import tqdm
@@ -106,6 +107,6 @@ def convert(xml_file, img_root, outjson=None):
     if outjson:
         out_json = outjson
     else:
-        json_file_name = taskname if taskname else 'annotation'
+        json_file_name = taskname if taskname else Path(xml_file).stem
         out_json = img_root.parent / f'{json_file_name}.json'
     write_json(out_json, coco_dict)
