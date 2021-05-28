@@ -60,6 +60,14 @@ python3 -m cocojson.run.cvatvid2coco -h
 
 _TODO_
 
+#### CrowdHuman odgt to COCO JSON
+
+Converts CrowdHuman's odgt annotation format to COCO JSON format.
+
+```bash
+python3 -m cocojson.run.crowdhuman2coco -h
+```
+
 #### COCO to Darknet
 
 _TODO_
