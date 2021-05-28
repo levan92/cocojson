@@ -60,7 +60,7 @@ python3 -m cocojson.run.cvatvid2coco -h
 
 _TODO_
 
-#### CrowdHuman odgt to COCO JSON
+#### [CrowdHuman odgt to COCO JSON](./docs/crowdhuman2coco.md)
 
 Converts CrowdHuman's odgt annotation format to COCO JSON format.
 
