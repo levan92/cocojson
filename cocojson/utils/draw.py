@@ -25,6 +25,10 @@ def draw_text(img, ltrb, annot, font=cv2.FONT_HERSHEY_DUPLEX, fontScale=1.0, col
     except KeyError:
         iscrowd = None
     try:
+        ignore = annot['ignore']
+    except KeyError:
+        ignore = None
+    try:
         tid = annot['attributes']['track_id']
     except KeyError:
         tid = None
@@ -36,9 +40,11 @@ def draw_text(img, ltrb, annot, font=cv2.FONT_HERSHEY_DUPLEX, fontScale=1.0, col
         text += ';oc'
     if iscrowd:
         text += ';cr'
+    if ignore:
+        text += ';ig'
     text_size, _ = cv2.getTextSize(text, font, fontScale, thickness)
     _, text_h = text_size
     cv2.putText(img, 
             text, 
-            (l+BUFFER, b-(BUFFER+2)), 
+            (l+BUFFER, t+text_h+(BUFFER+2)), 
             fontFace=font, fontScale=fontScale, color=color, thickness=thickness)
