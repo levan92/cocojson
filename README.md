@@ -46,6 +46,14 @@ Mapping categories to a new dataset. Usually used for converting annotation labe
 python3 -m cocojson.run.map_cat -h
 ```
 
+#### [Prune Ignores](./docs/ignore_prune.md)
+
+Remove images annotated with certain "ignore" category labels. This is usually used for removing rubbish images that are pointed out by annotators to ignore frame.
+
+```bash
+python3 -m cocojson.run.ignore_prune -h
+```
+
 ### Converters
 
 #### [CVAT Video XML to COCO](./docs/cvatvid2coco.md)
