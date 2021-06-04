@@ -4,8 +4,7 @@ Converts CrowdHuman dataset's odgt annotation format to COCO JSON format
 
 Extracted from https://www.crowdhuman.org/download.html:
 
-odgt is a file format that each line of it is a JSON, this JSON contains the whole annotations for the relative image. We prefer using this format since it is reader-friendly.
-
+odgt is a file format that each line of it is a JSON, this JSON contains the whole annotations for the relative image. 
 ```
 JSON{
     "ID" : image_filename,
