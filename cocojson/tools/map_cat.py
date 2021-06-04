@@ -59,8 +59,9 @@ def map_cat(coco_dict, new_cat_dict, mapping_dict, keep_old=False, setname=None)
             # not mention in mapping and throwing away
             warn(f"Category: {cat['name']} not found in mapping. Will be removing associated annotation. To keep, please flag keep old.")
             continue 
-        indices_map[cat['id']] = len(new_cats)+1
-        this_cat['id'] = len(new_cats)+1
+        new_id = len(new_cats)+1
+        indices_map[cat['id']] = new_id
+        this_cat['id'] = new_id
         new_cats.append(this_cat)
     coco_dict['categories'] = new_cats
 
