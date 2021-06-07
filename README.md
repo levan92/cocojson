@@ -8,15 +8,15 @@ Utility scripts for COCO json annotation format. The COCO Format is defined [her
 
 ## Usage
 
-Please click into each for more details (if applicable). 
+Please click into each for more details (if applicable).
 
 ### COCO Eval
 
-Please use https://github.com/levan92/cocoapi. 
+Please use https://github.com/levan92/cocoapi.
 
 ### Utility Tools
 
-#### [Merge](./docs/merge.md)
+#### [Merge](./docs/tools/merge.md)
 
 Merges multiple datasets
 
@@ -24,7 +24,7 @@ Merges multiple datasets
 python3 -m cocojson.run.merge -h
 ```
 
-#### [Sample](./docs/sample.md)
+#### [Sample](./docs/tools/sample.md)
 
 Samples k images from a dataset
 
@@ -32,7 +32,7 @@ Samples k images from a dataset
 python3 -m cocojson.run.sample -h
 ```
 
-#### [Visualise](./docs/viz.md)
+#### [Visualise](./docs/tools/viz.md)
 
 Visualise annotations onto images. Best used for sanity check.
 
@@ -40,7 +40,7 @@ Visualise annotations onto images. Best used for sanity check.
 python3 -m cocojson.run.viz -h
 ```
 
-#### [Map Categories](./docs/map_cat.md)
+#### [Map Categories](./docs/tools/map_cat.md)
 
 Mapping categories to a new dataset. Usually used for converting annotation labels to actual class label for training.
 
@@ -48,7 +48,7 @@ Mapping categories to a new dataset. Usually used for converting annotation labe
 python3 -m cocojson.run.map_cat -h
 ```
 
-#### [Prune Ignores](./docs/ignore_prune.md)
+#### [Prune Ignores](./docs/tools/ignore_prune.md)
 
 Remove images annotated with certain "ignore" category labels. This is usually used for removing rubbish images that are pointed out by annotators to ignore frame.
 
@@ -56,7 +56,7 @@ Remove images annotated with certain "ignore" category labels. This is usually u
 python3 -m cocojson.run.ignore_prune -h
 ```
 
-#### [Insert Images Meta-Information](./docs/insert_img_meta.md)
+#### [Insert Images Meta-Information](./docs/tools/insert_img_meta.md)
 
 Insert any extra attributes/image meta information associated with the images into the coco json file.  
 
@@ -66,7 +66,7 @@ python3 -m cocojson.run.ignore_prune -h
 
 ### Converters
 
-#### [CVAT Video XML to COCO](./docs/cvatvid2coco.md)
+#### [CVAT Video XML to COCO](./docs/converters/cvatvid2coco.md)
 
 Convert CVAT Video XML to COCO JSON whilst preserving track information.
 
@@ -78,13 +78,15 @@ python3 -m cocojson.run.cvatvid2coco -h
 
 _TODO_
 
-#### [CrowdHuman odgt to COCO JSON](./docs/crowdhuman2coco.md)
+#### [CrowdHuman odgt to COCO JSON](./docs/converters/crowdhuman2coco.md)
 
 Converts CrowdHuman's odgt annotation format to COCO JSON format.
 
 ```bash
 python3 -m cocojson.run.crowdhuman2coco -h
 ```
+
+#### [Custom Object Detection Logging format to COCO JSON](./docs/converters/log2coco.md)
 
 #### COCO to Darknet
 
