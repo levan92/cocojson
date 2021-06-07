@@ -8,6 +8,8 @@ Utility scripts for COCO json annotation format. The COCO Format is defined [her
 
 ## Usage
 
+Please click into each for more details (if applicable). 
+
 ### COCO Eval
 
 Please use https://github.com/levan92/cocoapi. 
