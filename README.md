@@ -66,7 +66,7 @@ python3 -m cocojson.run.ignore_prune -h
 
 ### Converters
 
-#### [CVAT Video XML to COCO](./docs/converters/cvatvid2coco.md)
+#### [CVAT Video XML to COCO JSON](./docs/converters/cvatvid2coco.md)
 
 Convert CVAT Video XML to COCO JSON whilst preserving track information.
 
@@ -74,7 +74,7 @@ Convert CVAT Video XML to COCO JSON whilst preserving track information.
 python3 -m cocojson.run.cvatvid2coco -h
 ```
 
-#### CVAT Image XML to COCO
+#### CVAT Image XML to COCO JSON
 
 _TODO_
 
@@ -88,7 +88,7 @@ python3 -m cocojson.run.crowdhuman2coco -h
 
 #### [Custom Object Detection Logging format to COCO JSON](./docs/converters/log2coco.md)
 
-Converts Custom Object Detection Logging format to COCO.
+Converts Custom Object Detection Logging format to COCO JSON format.
 
 ```bash
 python3 -m cocojson.run.log2coco -h
