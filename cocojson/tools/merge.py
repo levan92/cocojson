@@ -78,3 +78,27 @@ def merge(jsons, img_roots, cids, output_dir, outname='merged'):
     out_json = out_dir_path / f'{outname}.json'
     write_json(out_json, merged_dict)
 
+def merge_from_file(source_list, root=None):
+    '''
+    This is a way of merging datasets (each in coco format) based on a list file.  
+
+    `source_list` is a txt file which contains a list of coco dataset directories to merge. Each coco dataset directory should have an `images` folder and a `<directory name>.json` annotation file. In the source list file, dataset split modes are indicated by [square brackets], followed by the constituent directory names. Directory names must be unique.  
+
+    For e.g.: 
+        [TRAIN]
+        iphone_dataset1
+        iphone_dataset2
+        dslr_dataset1
+        dslr_dataset2
+
+        [VAL]
+        iphone_dataset3
+        dslr_dataset3
+
+    Comments (# in front of line) are ignored 
+    
+    `root` is the parent folder containing all the coco dataset folders (can be nested, but dataset folder names have to be unique).
+    '''
+
+    # TODO
+    pass
