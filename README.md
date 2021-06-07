@@ -88,6 +88,12 @@ python3 -m cocojson.run.crowdhuman2coco -h
 
 #### [Custom Object Detection Logging format to COCO JSON](./docs/converters/log2coco.md)
 
+Converts Custom Object Detection Logging format to COCO.
+
+```bash
+python3 -m cocojson.run.log2coco -h
+```
+
 #### COCO to Darknet
 
 _TODO_
