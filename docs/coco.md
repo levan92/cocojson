@@ -30,7 +30,8 @@
         "description": ...,
         "contributor": ...,
         "url": ...,
-        "date_created": ...
+        "date_created": ...,
+        "image_meta_count": (this is an addition specific to this repo) dictionaries of image meta information  
     }
 }
 ```
@@ -60,6 +61,10 @@
             "file_name": subpath that should append to root image directory to give you a path to the image,
             "height": int,
             "width": int,
+            "attributes": {
+                "extra attributes": (this is an addition specific to this repo) any extra meta info associated with image (see `insert_img_meta.md`),
+            },
+
         },
         ...
     ]

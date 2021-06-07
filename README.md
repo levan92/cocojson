@@ -54,6 +54,14 @@ Remove images annotated with certain "ignore" category labels. This is usually u
 python3 -m cocojson.run.ignore_prune -h
 ```
 
+#### [Insert Images Meta-Information](./docs/insert_img_meta.md)
+
+Insert any extra attributes/image meta information associated with the images into the coco json file.  
+
+```bash
+python3 -m cocojson.run.ignore_prune -h
+```
+
 ### Converters
 
 #### [CVAT Video XML to COCO](./docs/cvatvid2coco.md)
