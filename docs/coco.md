@@ -44,7 +44,7 @@
         {
             "id": int (usually start from 1),
             "name": category name,
-            "supercategory": optional
+            "supercategory": optional, usually left blank or repeats the category name.
         },
         ...
     ]
@@ -85,14 +85,14 @@ Complete list of all relevant images (whether positive or negative)
         {
             "id": int (usually start from 1),
             "image_id": corresponding image id,
-            "category_id": corresponding category id, 
+            "category_id": corresponding category id,
             "bbox": [left, top, width, height],
             "area": float,
-            "iscrowd": 0 or 1, 
+            "iscrowd": 0 or 1,
             "attributes": {
                 "occluded": bool,
-                "track_id": int (usually start from 0),
-                "keyframe": bool,
+                "track_id": (this is an addition specific to this repo) int, usually start from 0,
+                "keyframe": (this is an addition specific to this repo) bool,
             },
             "segmentation": optional,
         },
@@ -103,9 +103,9 @@ Complete list of all relevant images (whether positive or negative)
 
 ### Storing track information
 
-Some annotations are done with tracking/interpolation (for CVAT), COCO JSON format should be able to encode these track information within. Here, we define it inside the `attributes` dict of each `annotation`:
+(this is an addition specific to this repo) Some annotations are done with tracking/interpolation (for CVAT), COCO JSON format should be able to encode these track information within. Here, we define it inside the `attributes` dict of each `annotation`:
 
-- `track_id` 
+- `track_id`
 - `keyframe`: this is only relevant for CVAT interpolation mode, which tells if this annotation is a keyframe or not (CVAT linearly interpolates boxes between keyframes)
 
 ## References
