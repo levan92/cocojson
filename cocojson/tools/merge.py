@@ -103,7 +103,6 @@ def get_dataset_splits_from(mergelist):
                 end = l.index(']')
                 mode = l[start+1:end]
                 mode = mode.casefold()
-                print(f'Split found: {mode}')
                 if mode in splits:
                     # earlier splits get overwritten
                     splits[mode] = []
