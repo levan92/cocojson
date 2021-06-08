@@ -80,12 +80,20 @@ Split up a COCO JSON file by images' meta-information/attributes
 python3 -m cocojson.run.split_by_meta -h
 ```
 
-#### [Match Images between 2 COCO JSONs](./docs/tools/split_by_meta.md)
+#### [Match Images between 2 COCO JSONs](./docs/tools/match_imgs.md)
 
 Match images between a reference COCO JSON A and COCO JSON B (to be trimmed). Any images in JSON B that is not found in JSON A will be removed (along with associated annotations)
 
 ```bash
 python3 -m cocojson.run.match_imgs -h
+```
+
+#### [Extract only Annotations](./docs/tools/pred_only.md)
+
+Get annotations/predictions only from a COCO JSON. Usually used to generate a list of predictions for COCO evaluation.
+
+```bash
+python3 -m cocojson.run.pred_only -h
 ```
 
 ### Converters
