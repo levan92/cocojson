@@ -6,3 +6,4 @@ from .map_cat import map_cat_from_files
 from .ignore_prune import ignore_prune_from_file
 from .insert_img_meta import insert_img_meta_from_file
 from .split_by_meta import split_by_meta_from_file
+from .match_imgs import match_imgs_from_file
