@@ -13,23 +13,27 @@ Merged Dataset:
     - Image Folder from DatasetA
     - ...
 
-Only given category IDs for each dataset will be merged. Merged category list will merge constituent categories based on category name.
+Only given category IDs for each dataset will be merged. Merged category list will merge constituent categories based on category name. If no `-c` is flagged, default will take all categories to merge.
+
+See also [Merge From File](./merge_from_file.md).
 
 ## Usage
 
 ```bash
-python3 -m cocojson.merge_coco -h
+python3 -m cocojson.run.merge -h
 ```
 
 ```
-usage: merge_coco.py [-h] -j JSON -r ROOT -c CIDS [CIDS ...] -o OUTPUT [--outname OUTNAME]
+usage: merge.py [-h] -j JSON -r ROOT [-c CIDS [CIDS ...]] -o OUTPUT
+                [--outname OUTNAME]
 
 optional arguments:
   -h, --help            show this help message and exit
   -j JSON, --json JSON  path to coco json
   -r ROOT, --root ROOT  path to root image directory
   -c CIDS [CIDS ...], --cids CIDS [CIDS ...]
-                        category ids to merge
+                        category ids to merge (optional, default will take all
+                        categories to merge.)
   -o OUTPUT, --output OUTPUT
                         path to output directory
   --outname OUTNAME     name of output json (default: "merged")
@@ -46,4 +50,8 @@ Categories will be merged by category name
 
 ```bash
 python3 -m cocojson.run.merge -r test_datasets/datasetA/images/ -j test_datasets/datasetA/val.json -c 1 -r test_datasets/datasetB/images/ -j test_datasets/datasetB/val.json -c 1 -r test_datasets/datasetC/images/ -j test_datasets/datasetC/val.json -c 2 -r test_datasets/datasetD/images/ -j test_datasets/datasetD/val.json -c 3 -o test_datasets/merged/
+```
+
+```bash
+python3 -m cocojson.run.merge -r /home/dh/Workspace/cocojson/test_datasets/datasetA/images -j /home/dh/Workspace/cocojson/test_datasets/datasetA/val.json  -r test_datasets/datasetC/images/ -j test_datasets/datasetC/val.json  -o test_datasets/merged/
 ```

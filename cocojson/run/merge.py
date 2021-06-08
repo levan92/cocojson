@@ -14,12 +14,12 @@ def main():
     )
     parser.add_argument('-j', '--json', help='path to coco json', action='append', required=True)
     parser.add_argument('-r', '--root', help='path to root image directory', action='append', required=True)
-    parser.add_argument('-c', '--cids', help='category ids to merge', action='append', nargs='+', required=True, type=int)
+    parser.add_argument('-c', '--cids', help='category ids to merge (optional, default will take all categories to merge.)', action='append', nargs='+', type=int)
     parser.add_argument('-o', '--output', help='path to output directory', required=True)
     parser.add_argument('--outname', help='name of output json (default: "merged")', default='merged')
     args = parser.parse_args()
 
-    merge(args.json, args.root, args.cids, args.output, outname=args.outname)
+    merge(args.json, args.root, args.output, cids=args.cids, outname=args.outname)
 
 if __name__ == '__main__':
     main()

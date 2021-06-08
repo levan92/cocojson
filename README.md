@@ -24,6 +24,14 @@ Merges multiple datasets
 python3 -m cocojson.run.merge -h
 ```
 
+#### [Merge from file](./docs/tools/merge_from_file.md)
+
+Merges multiple datasets
+
+```bash
+python3 -m cocojson.run.merge_from_file -h
+```
+
 #### [Sample](./docs/tools/sample.md)
 
 Samples k images from a dataset

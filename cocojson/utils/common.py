@@ -2,6 +2,7 @@ import json
 from shutil import copy
 from pathlib import Path
 from collections import defaultdict
+import filecmp
 
 IMG_EXTS = ['.jpg','.jpeg','.png','.tiff','.tif','.bmp','.gif','.webp']
 IMG_EXTS = [x.lower() for x in IMG_EXTS] + [x.upper() for x in IMG_EXTS]
@@ -26,6 +27,8 @@ def path(str_path, is_dir=False):
 
 def assure_copy(src, dst):
     assert Path(src).is_file()
+    if Path(dst).is_file() and filecmp.cmp(src,dst,shallow=True):
+        return
     Path(dst).parent.mkdir(exist_ok=True, parents=True)
     copy(src, dst)
 
