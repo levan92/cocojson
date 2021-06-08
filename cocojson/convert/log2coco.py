@@ -34,12 +34,24 @@ def convert(log_annot, img_root, outjson=None):
     annot_root = annot_txt_path.parent
     annot_images_dir = path(img_root, is_dir=True)
 
+    date_dt = datetime.now().date()
+    date_str = f'{date_dt:%Y/%m/%d}'
+    info_dict = {
+        "description": f"{annot_root.stem}",
+        "data_converted": date_str
+    }
+    coco_dict = {
+        'info'  : info_dict,
+    }
+
     annot_classes = annot_root / 'classes.txt'
     cid_map = {}
-    with annot_classes.open('r') as f:
-        classes = [ c.strip() for c in f.readlines() ]
-        category_dicts = [ {'id':i+1, 'name':cl, 'supercategory':''} for i, cl in enumerate(classes) ]
-    pprint(category_dicts)
+    if annot_classes.is_file():
+        with annot_classes.open('r') as f:
+            classes = [ c.strip() for c in f.readlines() ]
+            category_dicts = [ {'id':i+1, 'name':cl, 'supercategory':''} for i, cl in enumerate(classes) ]
+        pprint(category_dicts)
+        coco_dict['categories'] = category_dicts
 
     img_dicts = []
     annot_dicts = []
@@ -66,7 +78,8 @@ def convert(log_annot, img_root, outjson=None):
 
             bbs = splits[1:]
             for bb in bbs:
-                x_min, y_min, x_max, y_max, class_id = [int(x) for x in bb.split(',')]
+                bb_splits = bb.split(',')[:5]
+                x_min, y_min, x_max, y_max, class_id = [int(float(x)) for x in bb_splits]
                 w = x_max - x_min
                 h = y_max - y_min
                 area = w * h
@@ -82,19 +95,8 @@ def convert(log_annot, img_root, outjson=None):
 
     print(f'{len(annot_dicts)} boxes in {len(img_dicts)} images from {annot_root}')
 
-    date_dt = datetime.now().date()
-    date_str = f'{date_dt:%Y/%m/%d}'
-    info_dict = {
-        "description": f"{annot_root.stem}",
-        "data_converted": date_str
-    }
-
-    coco_dict = {
-        'info'  : info_dict,
-        'categories': category_dicts,
-        'images': img_dicts,
-        'annotations': annot_dicts,
-    }
+    coco_dict['images'] = img_dicts
+    coco_dict['annotations'] = annot_dicts
 
     if outjson:
         out_json = outjson
