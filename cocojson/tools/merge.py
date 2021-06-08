@@ -112,15 +112,23 @@ def get_dataset_splits_from(mergelist):
                 splits[mode].append(l)
     return splits
 
-def find_coco_in(grandparent):
+def find_coco_in(grandparent, get_images=True):
     grandparent = path(grandparent, is_dir=True)
-    coco_dirs = {}
-    for d in grandparent.rglob('images'):
-        stem = d.parent.stem
-        cocojson = d.parent / f'{stem}.json'        
-        if cocojson.is_file():
-            coco_dirs[stem] = (cocojson, d)
-    return coco_dirs
+    cocos = {}
+    for jp in grandparent.rglob('*.json'):
+        if jp.stem == jp.parent.stem:
+            if get_images:
+                imagedir = jp.parent / 'images'
+                if imagedir.is_dir():
+                    cocos[jp.stem] = (jp, imagedir)
+            else:
+                cocos[jp.stem] = jp
+    # for d in grandparent.rglob('images'):
+    #     stem = d.parent.stem
+    #     cocojson = d.parent / f'{stem}.json'        
+    #     if cocojson.is_file():
+    #         cocos[stem] = (cocojson, d)
+    return cocos
 
 def merge_from_file(merge_list, output_dir, root=None):
     '''
