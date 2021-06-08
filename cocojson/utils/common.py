@@ -3,6 +3,8 @@ from shutil import copy
 from pathlib import Path
 from collections import defaultdict
 import filecmp
+from functools import reduce
+from operator import getitem
 
 IMG_EXTS = ['.jpg','.jpeg','.png','.tiff','.tif','.bmp','.gif','.webp']
 IMG_EXTS = [x.lower() for x in IMG_EXTS] + [x.upper() for x in IMG_EXTS]
@@ -71,3 +73,6 @@ def read_coco_json(coco_json):
 
 def get_imgs_from_dir(dirpath):
     return sorted([ img for img in dirpath.rglob('*') if img.is_file() and img.suffix in IMG_EXTS ])
+
+def dict_val_from_keys_list(dic, keys_list):
+    return reduce(getitem, keys_list, dic)

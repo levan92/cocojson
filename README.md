@@ -72,6 +72,14 @@ Insert any extra attributes/image meta information associated with the images in
 python3 -m cocojson.run.ignore_prune -h
 ```
 
+#### [Split by Image Meta-Information](./docs/tools/split_by_meta.md)
+
+Split up a COCO JSON file by images' meta-information/attributes
+
+```bash
+python3 -m cocojson.run.split_by_meta -h
+```
+
 ### Converters
 
 #### [CVAT Video XML to COCO JSON](./docs/converters/cvatvid2coco.md)
