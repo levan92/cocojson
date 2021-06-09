@@ -62,7 +62,7 @@ def insert_img_meta_from_file(coco_json, paired_list_file, attribute_name='metai
     with paired_list.open('r') as f:
         for line in f.readlines():
             fp, val = line.strip().split(',')
-            fn = Path(fp).name # just in case full path is given
+            fn = Path(fp).stem # just in case full path is given
             img2metainfo[fn] = val
 
     coco_dict = insert_img_meta(coco_dict, img2metainfo, attribute_name=attribute_name, collate_count=collate_count)
@@ -80,8 +80,9 @@ def insert_img_meta(coco_dict, img2metainfo, attribute_name='metainfo', collate_
     
     for img_block in coco_dict['images']:
         img_name = img_block['file_name']
-        assert img_name in img2metainfo
-        val = img2metainfo[img_name]
+        img_stem = Path(img_name).stem
+        assert img_stem in img2metainfo, img_name
+        val = img2metainfo[img_stem]
         if IMAGES_ATTRIBUTES not in img_block:
             img_block[IMAGES_ATTRIBUTES] = {}
         img_block[IMAGES_ATTRIBUTES][f"{attribute_name}"] = val
