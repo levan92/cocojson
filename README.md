@@ -69,7 +69,7 @@ python3 -m cocojson.run.ignore_prune -h
 Insert any extra attributes/image meta information associated with the images into the coco json file.  
 
 ```bash
-python3 -m cocojson.run.ignore_prune -h
+python3 -m cocojson.run.insert_img_meta -h
 ```
 
 #### [Split by Image Meta-Information](./docs/tools/split_by_meta.md)
