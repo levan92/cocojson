@@ -74,13 +74,14 @@ def split_by_meta(coco_dict, meta_keys_list, setname=''):
         split_coco_dicts[attr]['annotations'].append(new_annot_dict)
 
     for attr, dic in split_coco_dicts.items():
+        print(attr)
         if 'info' in coco_dict:
-            dic['info'] = coco_dict['info']
+            dic['info'] = deepcopy(coco_dict['info'])
             dic['info']['description'] = f"{attr} only {setname}"   
         if 'licenses' in coco_dict:
-            dic['licenses'] = coco_dict['licenses']
+            dic['licenses'] = deepcopy(coco_dict['licenses'])
         if 'categories' in coco_dict:
-            dic['categories'] = coco_dict['categories']
+            dic['categories'] = deepcopy(coco_dict['categories'])
         
     return split_coco_dicts
         
