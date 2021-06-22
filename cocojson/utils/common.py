@@ -76,3 +76,11 @@ def get_imgs_from_dir(dirpath):
 
 def dict_val_from_keys_list(dic, keys_list):
     return reduce(getitem, keys_list, dic)
+
+def write_json_in_place(orig_coco_json, coco_dict, append_str='new', out_json=None):
+    if out_json is None:
+        orig_json_path = Path(orig_coco_json)
+        out_json_path = orig_json_path.parent / f'{orig_json_path.stem}_{append_str}.json'
+    else:
+        out_json_path = Path(out_json)
+    write_json(out_json_path, coco_dict)

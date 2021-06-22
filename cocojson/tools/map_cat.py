@@ -20,11 +20,11 @@ from warnings import warn
 from cocojson.utils.common import read_coco_json, read_json, write_json
 
 def map_cat_from_files(coco_json, new_cat_json, mapping_json, out_json=None, keep_old=False):
-    coco_dict, setname = read_coco_json(coco_json)
+    coco_dict, _ = read_coco_json(coco_json)
     new_cat_dict = read_json(new_cat_json)
     mapping_dict = read_json(mapping_json)
 
-    out_dict = map_cat(coco_dict, new_cat_dict, mapping_dict, keep_old=keep_old, setname=setname)
+    out_dict = map_cat(coco_dict, new_cat_dict, mapping_dict, keep_old=keep_old)
     
     if out_json is None:
         orig_json_path = Path(coco_json)
@@ -33,7 +33,7 @@ def map_cat_from_files(coco_json, new_cat_json, mapping_json, out_json=None, kee
         out_json_path = Path(out_json)
     write_json(out_json_path, out_dict)
 
-def map_cat(coco_dict, new_cat_dict, mapping_dict, keep_old=False, setname=None):
+def map_cat(coco_dict, new_cat_dict, mapping_dict, keep_old=False):
     new_cat_list = new_cat_dict['categories'] if isinstance(new_cat_dict, dict) else new_cat_dict
     assert isinstance(new_cat_list, list),new_cat_list
     new_name2cat = { cat['name']:cat for cat in new_cat_list }
