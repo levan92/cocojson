@@ -49,7 +49,7 @@ If `collate_count` is flagged, image counts of the respective attributes will be
 from pathlib import Path
 from collections import defaultdict 
 
-from cocojson.utils.common import read_coco_json, write_json, path
+from cocojson.utils.common import read_coco_json, path, write_json_in_place
 
 IMAGES_ATTRIBUTES = 'attributes'
 INFO_IMAGEMETACOUNT = 'image_meta_count'
@@ -67,12 +67,7 @@ def insert_img_meta_from_file(coco_json, paired_list_file, attribute_name='metai
 
     coco_dict = insert_img_meta(coco_dict, img2metainfo, attribute_name=attribute_name, collate_count=collate_count)
     
-    if out_json is None:
-        orig_json_path = Path(coco_json)
-        out_json_path = orig_json_path.parent / f'{orig_json_path.stem}_inserted.json'
-    else:
-        out_json_path = Path(out_json)
-    write_json(out_json_path, coco_dict)
+    write_json_in_place(coco_json, coco_dict, append_str='inserted', out_json=out_json)
 
 def insert_img_meta(coco_dict, img2metainfo, attribute_name='metainfo', collate_count=False):
     if collate_count:

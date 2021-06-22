@@ -13,11 +13,9 @@ Mapping categories to a new dataset. Usually used for converting annotation labe
 
 - By default, any old label names not given in mapping will be taken out in the new dataset along with associated annotations. To preserve old label names in the new dataset, please flag `keep_old`. 
 '''
-
-from pathlib import Path
 from warnings import warn
 
-from cocojson.utils.common import read_coco_json, read_json, write_json
+from cocojson.utils.common import read_coco_json, read_json, write_json_in_place
 
 def map_cat_from_files(coco_json, new_cat_json, mapping_json, out_json=None, keep_old=False):
     coco_dict, _ = read_coco_json(coco_json)
@@ -26,12 +24,7 @@ def map_cat_from_files(coco_json, new_cat_json, mapping_json, out_json=None, kee
 
     out_dict = map_cat(coco_dict, new_cat_dict, mapping_dict, keep_old=keep_old)
     
-    if out_json is None:
-        orig_json_path = Path(coco_json)
-        out_json_path = orig_json_path.parent / f'{orig_json_path.stem}_mapped.json'
-    else:
-        out_json_path = Path(out_json)
-    write_json(out_json_path, out_dict)
+    write_json_in_place(coco_json, out_dict, append_str='mapped', out_json=out_json)
 
 def map_cat(coco_dict, new_cat_dict, mapping_dict, keep_old=False):
     new_cat_list = new_cat_dict['categories'] if isinstance(new_cat_dict, dict) else new_cat_dict

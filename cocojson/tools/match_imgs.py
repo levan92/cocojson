@@ -3,10 +3,9 @@ Match images between COCO JSON A and COCO JSON B. Any images in JSON B that is n
 
 Match will be through image `file_name`.
 '''
-from pathlib import Path
 from warnings import warn
 
-from cocojson.utils.common import read_coco_json, write_json
+from cocojson.utils.common import read_coco_json, write_json_in_place
 
 def match_imgs_from_file(cocojsonA, cocojsonB, outjson=None):
     coco_dictA, setnameA = read_coco_json(cocojsonA)
@@ -14,12 +13,7 @@ def match_imgs_from_file(cocojsonA, cocojsonB, outjson=None):
 
     trimmed_cocodict = match_imgs(coco_dictA, coco_dictB)
     
-    if outjson is None:
-        orig_json_path = Path(cocojsonB)
-        out_json_path = orig_json_path.parent / f'{orig_json_path.stem}_trimmed.json'
-    else:
-        out_json_path = Path(outjson)
-    write_json(out_json_path, trimmed_cocodict)
+    write_json_in_place(cocojsonB, trimmed_cocodict, append_str='trimmed', out_json=outjson)
 
 def match_imgs(coco_dictA, coco_dictB):
     imgs_A = [ img['file_name'] for img in coco_dictA['images'] ]

@@ -6,22 +6,14 @@ Default ignore_list = ["ignore"]
 "ignore" labels will ignore entire image, take out image and associated annotations. "ignore" labels also taken out from categories
 
 '''
-from pathlib import Path
-
-from cocojson.utils.common import read_coco_json, write_json
+from cocojson.utils.common import read_coco_json, write_json_in_place
 
 def ignore_prune_from_file(coco_json, ignore_list=['ignore'], out_json=None):
-    coco_dict, setname = read_coco_json(coco_json)
-    out_dict = ignore_prune(coco_dict, ignore_list=ignore_list, setname=setname)
+    coco_dict, _ = read_coco_json(coco_json)
+    out_dict = ignore_prune(coco_dict, ignore_list=ignore_list)
+    write_json_in_place(coco_json, out_dict, append_str='pruned', out_json=out_json)
 
-    if out_json is None:
-        orig_json_path = Path(coco_json)
-        out_json_path = orig_json_path.parent / f'{orig_json_path.stem}_pruned.json'
-    else:
-        out_json_path = Path(out_json)
-    write_json(out_json_path, out_dict)
-
-def ignore_prune(coco_dict, ignore_list=['ignore'], setname=None):
+def ignore_prune(coco_dict, ignore_list=['ignore']):
     print(f'Ignore labels: {ignore_list}')
     new_cats = []
     cat_indices_map = {}
