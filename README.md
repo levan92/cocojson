@@ -40,6 +40,14 @@ Samples k images from a dataset
 python3 -m cocojson.run.sample -h
 ```
 
+#### [Split](./docs/tools/split.md)
+
+Split up a COCO JSON file by images into N sets defined by ratio of total images
+
+```bash
+python3 -m cocojson.run.split -h
+```
+
 #### [Visualise](./docs/tools/viz.md)
 
 Visualise annotations onto images. Best used for sanity check.
