@@ -2,7 +2,7 @@
 
 Filter categories from COCO JSON.
 
-Takes in a list of category names to keep.
+Takes in a list of category names or list of category ids to keep.
 
 ## Usage
 
@@ -19,11 +19,12 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   --cats CATS [CATS ...]
-                        Categories to keep, provide list, space separated
+                        Categories to keep, provide list, space separated. Can be category IDs or Names.
   --out OUT             Output json path
 ```
 
 ## Examples
 
 ```bash
-python3 -m cocojson.run.filter_cat test_datasets/merged/merged.json --cats apple person```
+python3 -m cocojson.run.filter_cat test_datasets/merged/merged.json --cats apple person
+```
