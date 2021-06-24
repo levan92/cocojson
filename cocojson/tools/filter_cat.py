@@ -17,4 +17,4 @@ def filter_cat(coco_dict, cats_to_keep):
     else:
         mapping_dict = {}
     new_cat_dict = coco_dict['categories']
-    return map_cat(coco_dict, new_cat_dict, mapping_dict, keep_old=False)
+    return map_cat(coco_dict, new_cat_dict, mapping_dict, keep_old=False, map_is_id=False)
