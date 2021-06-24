@@ -1,8 +1,8 @@
 # Split Dataset
 
-Split up a COCO JSON file by images into N sets defined by ratio of total images
+Split up a COCO JSON file by images into N sets defined by ratio of total images.
 
-Optionally, able to give names which corresponds to the ratios
+Optionally, able to give names which corresponds to the ratios.
 
 To shuffle images, flag `shuffle=True`.
 
