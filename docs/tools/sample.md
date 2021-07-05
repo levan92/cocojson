@@ -6,14 +6,16 @@ Expected format of 1 x Dataset:
 - 1 x json file 
 - 1 x Image Folder (to get to the image, path is assumed to be "Image Folder"/"file_name" given in json)
 
+Will output new dataset in given `outdir`, with new json file (same name as original json name) and `images` directory. 
+
 ## Usage
 
 ```bash
-python3 -m cocojson.sample_coco -h
+python3 -m cocojson.sample -h
 ```
 
 ```
-usage: sample_coco.py [-h] [--k K] json imgroot outdir
+usage: sample.py [-h] [--k K] json imgroot outdir
 
 positional arguments:
   json        Path to coco json

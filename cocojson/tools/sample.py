@@ -1,14 +1,16 @@
 '''
-Samples k images from a dataset
+Samples k images from a dataset. 
 
 Expected format of 1 x Dataset:
     - 1 x json file 
     - 1 x Image Folder (to get to the image, path is assumed to be "Image Folder"/"file_name" given in json)
+
+Will output new dataset in given `outdir`, with new json file (same name as original json name) and `images` directory. 
 '''
 
 from pathlib import Path
 from shutil import copy
-from random import sample
+from random import sample as _sample
 
 from cocojson.utils.common import read_json, write_json, path
 
@@ -24,7 +26,7 @@ def sample(json_path, imgroot, outdir, k=10):
 
     coco_dict = read_json(json_path)
 
-    sampled = sample(coco_dict['images'], k)
+    sampled = _sample(coco_dict['images'], k)
 
     new_imgs = []
     chosen_img_ids = []
