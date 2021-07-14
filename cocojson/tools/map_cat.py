@@ -31,7 +31,6 @@ def normalise_map_dict(mapping_dict, old_cats, new_cats, map_is_id):
         return new_map_dict
     else:
         for old_name, new_name in mapping_dict.items():
-            assert old_name in old_id_to_name.values()
             assert new_name in new_id_to_name.values()
         return mapping_dict
 
