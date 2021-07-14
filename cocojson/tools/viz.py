@@ -45,3 +45,6 @@ def viz(json, root, outdir=None, sample_k=None, show=False):
             writepath = outdir / f'{uniq_name}_viz.jpg' 
             cv2.imwrite(str(writepath), img_show)
     
+    num_images = len(image_dicts)
+    num_annots = len(coco_dict['annotations'])
+    return num_images, num_annots

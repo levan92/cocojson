@@ -15,8 +15,9 @@ from cocojson.utils.common import read_coco_json, write_json_in_place, path
 
 def ignore_prune_from_file(coco_json, ignore_list=['ignore'], out_json=None, img_root=None):
     coco_dict, _ = read_coco_json(coco_json)
-    out_dict = ignore_prune(coco_dict, ignore_list=ignore_list, img_root=img_root)
+    out_dict, num_pruned = ignore_prune(coco_dict, ignore_list=ignore_list, img_root=img_root)
     write_json_in_place(coco_json, out_dict, append_str='pruned', out_json=out_json)
+    return num_pruned
 
 def ignore_prune(coco_dict, ignore_list=['ignore'], img_root=None):
     if img_root:
@@ -57,7 +58,8 @@ def ignore_prune(coco_dict, ignore_list=['ignore'], img_root=None):
             img_dict['id'] = new_img_id
             new_imgs.append(img_dict)
     coco_dict['images'] = new_imgs
-    print(f'Pruned {orig_num_imgs-len(new_imgs)} imgs due to ignore labels.')
+    num_pruned = orig_num_imgs-len(new_imgs)
+    print(f'Pruned {num_pruned} imgs due to ignore labels.')
     print(f'Final Total Imgs: {len(new_imgs)}')
 
     new_annots = []
@@ -69,4 +71,4 @@ def ignore_prune(coco_dict, ignore_list=['ignore'], img_root=None):
             new_annots.append(annot)
     coco_dict['annotations'] = new_annots
 
-    return coco_dict
+    return coco_dict, num_pruned
