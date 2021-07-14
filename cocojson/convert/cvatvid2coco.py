@@ -31,6 +31,13 @@ def convert(xml_file, img_root, outjson=None):
         date_dt = datetime.strptime(dumped.text.split()[0], "%Y-%m-%d").date()
         date_str = f'{date_dt:%Y/%m/%d}'
 
+    start_frame = task.find('start_frame')
+    if start_frame is None:
+        start_frame = 0
+    else:
+        start_frame = int(start_frame.text)
+    assert start_frame >= 0
+
     coco_dict = {
         'info': {
             'description': taskname,
@@ -79,7 +86,7 @@ def convert(xml_file, img_root, outjson=None):
             if bool(int(box_elem.attrib['outside'])):
                 continue
             frame_idx = int(box_elem.attrib['frame'])
-            imgid = img_idx2id[frame_idx]
+            imgid = img_idx2id[frame_idx-start_frame]
             occluded = bool(int(box_elem.attrib['occluded']))
             keyframe = bool(int(box_elem.attrib['keyframe']))
             l = float(box_elem.attrib['xtl'])
