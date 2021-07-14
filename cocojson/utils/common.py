@@ -19,9 +19,11 @@ def write_json(json_path, dic):
         json.dump(dic, f)    
     print(f'Wrote json to {json_path}')
 
-def path(str_path, is_dir=False):
+def path(str_path, is_dir=False, mkdir=False):
     path_ = Path(str_path)
     if is_dir:
+        if mkdir:
+            path_.mkdir(parents=True, exist_ok=True)
         assert path_.is_dir(),path_
     else:
         assert path_.is_file(),path_
