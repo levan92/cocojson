@@ -5,15 +5,23 @@ Default ignore_list = ["ignore"]
 
 "ignore" labels will ignore entire image, take out image and associated annotations. "ignore" labels also taken out from categories
 
-'''
-from cocojson.utils.common import read_coco_json, write_json_in_place
+If img_root is given, ignored images will be deleted from the img_root. By default when img_root is not given, nothing will happen to the actual ignored image files, just taken out from the coco json.
 
-def ignore_prune_from_file(coco_json, ignore_list=['ignore'], out_json=None):
+'''
+from warnings import warn
+from os import remove
+
+from cocojson.utils.common import read_coco_json, write_json_in_place, path
+
+def ignore_prune_from_file(coco_json, ignore_list=['ignore'], out_json=None, img_root=None):
     coco_dict, _ = read_coco_json(coco_json)
-    out_dict = ignore_prune(coco_dict, ignore_list=ignore_list)
+    out_dict = ignore_prune(coco_dict, ignore_list=ignore_list, img_root=img_root)
     write_json_in_place(coco_json, out_dict, append_str='pruned', out_json=out_json)
 
-def ignore_prune(coco_dict, ignore_list=['ignore']):
+def ignore_prune(coco_dict, ignore_list=['ignore'], img_root=None):
+    if img_root:
+        img_root = path(img_root, is_dir=True)
+
     print(f'Ignore labels: {ignore_list}')
     new_cats = []
     cat_indices_map = {}
@@ -35,7 +43,15 @@ def ignore_prune(coco_dict, ignore_list=['ignore']):
     img_ids_map = {}
     orig_num_imgs = len(coco_dict['images'])
     for img_dict in coco_dict['images']:
-        if img_dict['id'] not in remove_img_ids:
+        if img_dict['id'] in remove_img_ids:
+            if img_root is not None:
+                img_path = img_root / img_dict['file_name']
+                if img_path.is_file():
+                    remove(img_path)
+                    print(f'Removed {img_path}')
+                else:
+                    warn(f'Image is supposed to be ignored and pruned, but it already does not exist: {img_path}')
+        else:
             new_img_id = len(new_imgs) + 1
             img_ids_map[img_dict['id']] = new_img_id
             img_dict['id'] = new_img_id
