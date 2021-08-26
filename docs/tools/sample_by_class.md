@@ -4,7 +4,7 @@ Samples images from each category for given sample number(s).
 
 You can give either an integer or a list of integer to set the number of images to sample for each category (if single int given, it will apply to all categories).
 
-If max_img is given, an upper limit will be impose on the total number of images of the sampled dataset. It will keep retrying the sampling until it falls under this upper limit, or it will raise an exception if it retries too many times without succeeding.
+If max_img is given, an upper limit will be impose on the total number of images of the sampled dataset. It will keep retrying the sampling until it falls under this upper limit. If max retries reached, it will prompt users to give alternative values for max_img and class_ks.
 
 Expected format of 1 x Dataset:
 - 1 x json file 
