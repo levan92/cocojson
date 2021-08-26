@@ -1,6 +1,6 @@
 from .merge import merge
 from .merge import merge_from_file
-from .sample import sample
+from .sample import sample, sample_by_class
 from .viz import viz
 from .map_cat import map_cat_from_files
 from .ignore_prune import ignore_prune_from_file

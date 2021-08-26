@@ -84,3 +84,17 @@ def write_json_in_place(orig_coco_json, coco_dict, append_str='new', out_json=No
     else:
         out_json_path = Path(out_json)
     write_json(out_json_path, coco_dict)
+
+def parse(json_path, imgroot, outdir=None):
+    json_path = path(json_path)
+    imgroot_path = path(imgroot, is_dir=True)
+
+    coco_dict = read_json(json_path)
+
+    if outdir:
+        outdir = Path(outdir)
+        outroot_path = outdir / 'images'
+        outroot_path.mkdir(exist_ok=True, parents=True)
+        return coco_dict, json_path, imgroot_path, outdir, outroot_path
+    else:
+        return coco_dict, json_path, imgroot_path

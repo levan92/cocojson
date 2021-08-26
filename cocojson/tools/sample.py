@@ -8,25 +8,24 @@ Expected format of 1 x Dataset:
 Will output new dataset in given `outdir`, with new json file (same name as original json name) and `images` directory. 
 '''
 
+from collections import defaultdict
 from pathlib import Path
 from shutil import copy
 from random import sample as _sample
 
-from cocojson.utils.common import read_json, write_json, path
+from cocojson.utils.common import read_json, write_json, parse
 
 def sample(json_path, imgroot, outdir, k=10):
-    json_path = path(json_path)
-    imgroot_path = path(imgroot, is_dir=True)
-
-    outdir = Path(outdir)
-    outroot_path = outdir / 'images'
-    outroot_path.mkdir(exist_ok=True, parents=True)
+    coco_dict, json_path, imgroot_path, outdir, outroot_path = parse(json_path, imgroot, outdir)
 
     assert k > 0
 
     coco_dict = read_json(json_path)
 
-    sampled = _sample(coco_dict['images'], k)
+    if k > len(coco_dict['images']):
+        sampled = coco_dict['images']
+    else:
+        sampled = _sample(coco_dict['images'], k)
 
     new_imgs = []
     chosen_img_ids = []
@@ -49,6 +48,71 @@ def sample(json_path, imgroot, outdir, k=10):
             new_annots.append(annot)
 
     coco_dict['images'] = new_imgs
+    coco_dict['annotations'] = new_annots
+
+    out_json = outdir / json_path.name
+    write_json(out_json, coco_dict)
+
+def sample_by_class(json_path, imgroot, outdir, class_ks=10, max_img=None, retries=1000):
+    '''
+    class_ks : How many to sample for each category. Integer to apply to all categories, or a list of integers corresponding to the categories. 
+    max_img :  Max num of images to be sampled, will retry until it falls below
+    retires: Max number of retries 
+    '''
+    coco_dict, json_path, imgroot_path, outdir, outroot_path = parse(json_path, imgroot, outdir)
+
+    num_cats = len(coco_dict['categories'])
+    if isinstance(class_ks, int):
+        class_k = class_ks
+        class_ks = [ class_ks for _ in range(num_cats)]
+    elif len(class_ks)==1:
+        class_k = class_ks[0]
+        class_ks = [ class_k for _ in range(num_cats)]
+    assert len(class_ks) == num_cats
+
+    some_dict = defaultdict(list)
+    for annot in coco_dict['annotations']:
+        img_id = annot['image_id']
+        cat_id = annot['category_id']
+        if img_id not in some_dict[cat_id]:
+            some_dict[cat_id].append(img_id)
+
+    for retry in range(retries):
+        sampled_imgs = []
+        for imgs, k in zip(some_dict.values(), class_ks):
+            if k > len(imgs):
+                sampled = imgs
+            else:
+                sampled = _sample(imgs, k)
+            sampled_imgs.extend(sampled)
+        sampled_imgs = list(set(sampled_imgs))
+        if max_img and len(sampled_imgs) > max_img:
+            print(f'Current sampling results in more image ({len(sampled_imgs)}) than allowable by max_img ({max_img}) argument, retrying ({retry+1}/{retries})..')
+        else:
+            break
+    else:
+        raise Exception('Not able to find suitable sampling under the given class sampling size and max num of imgs limit. Please retry.')
+    
+    new_img_dicts = []
+    for img_dict in coco_dict['images']:
+        if img_dict['id'] in sampled_imgs:
+            imgpath = imgroot_path / img_dict['file_name']
+            assert imgpath.is_file()
+
+            newip = outroot_path / img_dict['file_name']
+            newip.parent.mkdir(exist_ok=True, parents=True)
+
+            print(f'{imgpath}-->{newip}')
+            copy(imgpath, newip)
+
+            new_img_dicts.append(img_dict)
+
+    new_annots = []
+    for annot in coco_dict['annotations']:
+        if annot['image_id'] in sampled_imgs:
+            new_annots.append(annot)
+
+    coco_dict['images'] = new_img_dicts
     coco_dict['annotations'] = new_annots
 
     out_json = outdir / json_path.name

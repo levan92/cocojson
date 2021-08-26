@@ -40,6 +40,14 @@ Samples k images from a dataset
 python3 -m cocojson.run.sample -h
 ```
 
+#### [Sample by Category](./docs/tools/sample_by_class.md)
+
+Samples images from each category for given sample number(s).
+
+```bash
+python3 -m cocojson.run.sample_by_class -h
+```
+
 #### [Split](./docs/tools/split.md)
 
 Split up a COCO JSON file by images into N sets defined by ratio of total images
