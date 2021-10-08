@@ -20,10 +20,5 @@ setup(
         "Operating System :: OS Independent",
     ],
     packages=find_packages(exclude=("docs",)),
-    install_requires=[
-        "numpy",
-        "opencv-python>=4.5",
-        "tqdm",
-        "Pillow"    
-        ]
+    install_requires=["numpy", "opencv-python>=4.5", "tqdm", "Pillow"],
 )
