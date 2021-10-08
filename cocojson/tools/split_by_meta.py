@@ -23,6 +23,8 @@ For `cocojson.run.split_by_meta`, the `attribute` argument refer to the chosen k
 
 If attribute is not present for any of the image, it will be split to "nil". 
 
+Flag `perserve_img_id` in order to preserve original image IDs in the new jsons. 
+
 '''
 from pathlib import Path
 from collections import defaultdict
@@ -30,11 +32,11 @@ from copy import deepcopy
 
 from cocojson.utils.common import read_coco_json, dict_val_from_keys_list, write_json
 
-def split_by_meta_from_file(cocojson, meta_attr_name):
+def split_by_meta_from_file(cocojson, meta_attr_name, preserve_img_id=False):
     coco_dict, setname = read_coco_json(cocojson)
     meta_keys_list = ['attributes']
     meta_keys_list.append(meta_attr_name)
-    split_coco_dicts = split_by_meta(coco_dict, meta_keys_list)
+    split_coco_dicts = split_by_meta(coco_dict, meta_keys_list, preserve_img_id=preserve_img_id)
 
     cocojson = Path(cocojson)
     for attr, new_cocodict in split_coco_dicts.items():
@@ -48,7 +50,7 @@ def default_coco_dict():
     }
     return new_dict
 
-def split_by_meta(coco_dict, meta_keys_list, setname=''):
+def split_by_meta(coco_dict, meta_keys_list, setname='', preserve_img_id=False):
     split_coco_dicts = defaultdict(default_coco_dict)
     
     img_ids_maps = defaultdict(dict)
@@ -61,7 +63,10 @@ def split_by_meta(coco_dict, meta_keys_list, setname=''):
             attr = 'nil'
         oldimgids2attr[img_dict['id']] = attr
         new_img_dict = deepcopy(img_dict)
-        new_img_id = len(split_coco_dicts[attr]['images']) + 1
+        if preserve_img_id:
+            new_img_id = img_dict['id']
+        else:
+            new_img_id = len(split_coco_dicts[attr]['images']) + 1
         img_ids_maps[attr][img_dict['id']] = new_img_id
         new_img_dict['id'] = new_img_id        
         split_coco_dicts[attr]['images'].append(new_img_dict)

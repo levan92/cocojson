@@ -26,6 +26,8 @@ For `cocojson.run.split_by_meta`, the `attribute` argument refer to the chosen k
 
 If attribute is not present for any of the image, it will be split to "nil".
 
+Flag `perserve_img_id` in order to preserve original image IDs in the new jsons. 
+
 ## Usage
 
 ```bash
@@ -41,6 +43,7 @@ positional arguments:
 
 optional arguments:
   -h, --help  show this help message and exit
+  --preserve-img-id  Flag to preserve image ids 
 ```
 
 ## Examples
