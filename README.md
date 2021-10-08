@@ -1,18 +1,16 @@
 # cocojson
 
-Utility scripts for COCO json annotation format. The COCO Format is defined [here](./docs/coco.md).
+Utility functions for COCO json annotation format. The COCO Format is defined [here](./docs/coco.md).
 
 ## Install
 
-`cocojson` package can be installed through `pip3 install -e .` (editable install) or `pip3 install .`
+- `cocojson` is available on pypi through `pip3 install cocojson`
+- or if you prefer, clone this repo and it can be installed through `pip3 install -e .` (editable install) or `pip3 install .` as well.
 
 ## Usage
 
-Please click into each for more details (if applicable).
+Please click into each for more details (if applicable). Links works only if you're viewing from the [github homepage](https://github.com/levan92/cocojson).
 
-### COCO Eval
-
-Please use https://github.com/levan92/cocoapi.
 
 ### Utility Tools
 
@@ -153,3 +151,7 @@ python3 -m cocojson.run.log2coco -h
 #### COCO to Darknet
 
 _TODO_
+
+### COCO Eval
+
+Please use https://github.com/levan92/cocoapi.
