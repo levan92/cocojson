@@ -70,6 +70,14 @@ Mapping categories to a new dataset. Usually used for converting annotation labe
 python3 -m cocojson.run.map_cat -h
 ```
 
+#### [COCO Categori-fy](./docs/tools/coco_catify.md)
+
+Convert your custom dataset into COCO categories. Usually used for testing a coco-pretrained model against a custom dataset with overlapping categories with the 80 COCO classes.
+
+```bash
+python3 -m cocojson.run.coco_catify -h
+```
+
 #### [Filter Categories](./docs/tools/filter_cat.md)
 
 Filter categories from COCO JSON.
