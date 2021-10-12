@@ -37,7 +37,7 @@ def coco_catify_from_files(
     )
 
     write_json_in_place(
-        coco_json, out_dict, append_str="coco-catifed", out_json=out_json
+        coco_json, out_dict, append_str="coco-catified", out_json=out_json
     )
 
 
