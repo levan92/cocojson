@@ -11,7 +11,7 @@ Will output new dataset in given `outdir`, with new json file (same name as orig
 ## Usage
 
 ```bash
-python3 -m cocojson.sample -h
+python3 -m cocojson.run.sample -h
 ```
 
 ```
