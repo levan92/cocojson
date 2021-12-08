@@ -8,6 +8,8 @@ Expected format of 1 x Dataset:
 
 Will output new dataset in given `outdir`, with new json file (same name as original json name) and `images` directory. 
 
+Note: `image_id` is preserved from original json 
+
 ## Usage
 
 ```bash
