@@ -58,7 +58,14 @@ def map_cat_from_files(
     write_json_in_place(coco_json, out_dict, append_str="mapped", out_json=out_json)
 
 
-def map_cat(coco_dict, new_cat_dict, mapping_dict, keep_old=False, map_is_id=False):
+def map_cat(
+    coco_dict,
+    new_cat_dict,
+    mapping_dict,
+    keep_old=False,
+    map_is_id=False,
+    warn_verbose=True,
+):
     new_cat_list = (
         new_cat_dict["categories"] if isinstance(new_cat_dict, dict) else new_cat_dict
     )
@@ -88,9 +95,10 @@ def map_cat(coco_dict, new_cat_dict, mapping_dict, keep_old=False, map_is_id=Fal
             this_cat = cat
         else:
             # not mention in mapping and throwing away
-            warn(
-                f"Category: {cat['name']} not found in mapping. Will be removing associated annotation. To keep, please flag keep old."
-            )
+            if warn_verbose:
+                warn(
+                    f"Category: {cat['name']} not found in mapping. Will be removing associated annotation. To keep, please flag keep old."
+                )
             continue
         new_id = len(new_cats) + 1
         indices_map[cat["id"]] = new_id

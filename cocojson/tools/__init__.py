@@ -11,3 +11,4 @@ from .match_imgs import match_imgs_from_file
 from .pred_only import pred_only
 from .filter_cat import filter_cat, filter_cat_from_files
 from .coco_catify import coco_catify, coco_catify_from_files
+from .remove_empty import remove_empty, remove_empty_from_files

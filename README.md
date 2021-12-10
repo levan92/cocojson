@@ -14,6 +14,54 @@ Please click into each for more details (if applicable). Links works only if you
 
 ### Utility Tools
 
+#### [COCO Categori-fy](./docs/tools/coco_catify.md)
+
+Convert your custom dataset into COCO categories. Usually used for testing a coco-pretrained model against a custom dataset with overlapping categories with the 80 COCO classes.
+
+```bash
+python3 -m cocojson.run.coco_catify -h
+```
+
+#### [Extract only Annotations](./docs/tools/pred_only.md)
+
+Get annotations/predictions only from a COCO JSON. Usually used to generate a list of predictions for COCO evaluation.
+
+```bash
+python3 -m cocojson.run.pred_only -h
+```
+
+#### [Filter Categories](./docs/tools/filter_cat.md)
+
+Filter categories from COCO JSON.
+
+```bash
+python3 -m cocojson.run.filter_cat -h
+```
+
+#### [Insert Images Meta-Information](./docs/tools/insert_img_meta.md)
+
+Insert any extra attributes/image meta information associated with the images into the coco json file.  
+
+```bash
+python3 -m cocojson.run.insert_img_meta -h
+```
+
+#### [Map Categories](./docs/tools/map_cat.md)
+
+Mapping categories to a new dataset. Usually used for converting annotation labels to actual class label for training.
+
+```bash
+python3 -m cocojson.run.map_cat -h
+```
+
+#### [Match Images between 2 COCO JSONs](./docs/tools/match_imgs.md)
+
+Match images between a reference COCO JSON A and COCO JSON B (to be trimmed). Any images in JSON B that is not found in JSON A will be removed (along with associated annotations)
+
+```bash
+python3 -m cocojson.run.match_imgs -h
+```
+
 #### [Merge](./docs/tools/merge.md)
 
 Merges multiple datasets
@@ -28,6 +76,22 @@ Merges multiple datasets
 
 ```bash
 python3 -m cocojson.run.merge_from_file -h
+```
+
+#### [Prune Ignores](./docs/tools/ignore_prune.md)
+
+Remove images annotated with certain "ignore" category labels. This is usually used for removing rubbish images that are pointed out by annotators to ignore frame.
+
+```bash
+python3 -m cocojson.run.ignore_prune -h
+```
+
+#### [Remove Empty](.docs/tools/remove_empty.md)
+
+Remove empty/negative images from COCO JSON, aka images without associated annotations.
+
+```bash
+python3 -m cocojson.run.remove_empty -h
 ```
 
 #### [Sample](./docs/tools/sample.md)
@@ -54,54 +118,6 @@ Split up a COCO JSON file by images into N sets defined by ratio of total images
 python3 -m cocojson.run.split -h
 ```
 
-#### [Visualise](./docs/tools/viz.md)
-
-Visualise annotations onto images. Best used for sanity check.
-
-```bash
-python3 -m cocojson.run.viz -h
-```
-
-#### [Map Categories](./docs/tools/map_cat.md)
-
-Mapping categories to a new dataset. Usually used for converting annotation labels to actual class label for training.
-
-```bash
-python3 -m cocojson.run.map_cat -h
-```
-
-#### [COCO Categori-fy](./docs/tools/coco_catify.md)
-
-Convert your custom dataset into COCO categories. Usually used for testing a coco-pretrained model against a custom dataset with overlapping categories with the 80 COCO classes.
-
-```bash
-python3 -m cocojson.run.coco_catify -h
-```
-
-#### [Filter Categories](./docs/tools/filter_cat.md)
-
-Filter categories from COCO JSON.
-
-```bash
-python3 -m cocojson.run.filter_cat -h
-```
-
-#### [Prune Ignores](./docs/tools/ignore_prune.md)
-
-Remove images annotated with certain "ignore" category labels. This is usually used for removing rubbish images that are pointed out by annotators to ignore frame.
-
-```bash
-python3 -m cocojson.run.ignore_prune -h
-```
-
-#### [Insert Images Meta-Information](./docs/tools/insert_img_meta.md)
-
-Insert any extra attributes/image meta information associated with the images into the coco json file.  
-
-```bash
-python3 -m cocojson.run.insert_img_meta -h
-```
-
 #### [Split by Image Meta-Information](./docs/tools/split_by_meta.md)
 
 Split up a COCO JSON file by images' meta-information/attributes
@@ -110,21 +126,14 @@ Split up a COCO JSON file by images' meta-information/attributes
 python3 -m cocojson.run.split_by_meta -h
 ```
 
-#### [Match Images between 2 COCO JSONs](./docs/tools/match_imgs.md)
+#### [Visualise](./docs/tools/viz.md)
 
-Match images between a reference COCO JSON A and COCO JSON B (to be trimmed). Any images in JSON B that is not found in JSON A will be removed (along with associated annotations)
-
-```bash
-python3 -m cocojson.run.match_imgs -h
-```
-
-#### [Extract only Annotations](./docs/tools/pred_only.md)
-
-Get annotations/predictions only from a COCO JSON. Usually used to generate a list of predictions for COCO evaluation.
+Visualise annotations onto images. Best used for sanity check.
 
 ```bash
-python3 -m cocojson.run.pred_only -h
+python3 -m cocojson.run.viz -h
 ```
+
 
 ### Converters
 
