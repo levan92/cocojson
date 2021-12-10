@@ -4,7 +4,7 @@ Utility functions for COCO json annotation format. The COCO Format is defined [h
 
 ## Install
 
-- `cocojson` is available on [pypi](https://pypi.org/project/cocojson/0.1.0/) through `pip3 install cocojson`
+- `cocojson` is available on [pypi](https://pypi.org/project/cocojson/0.1.1/) through `pip3 install cocojson`
 - or if you prefer, clone this repo and it can be installed through `pip3 install -e .` (editable install) or `pip3 install .` as well.
 
 ## Usage
