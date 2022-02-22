@@ -1,6 +1,6 @@
 # cocojson
 
-Utility functions for COCO json annotation format. The COCO Format is defined [here](./docs/coco.md).
+Utility functions for COCO json annotation format. The COCO Format is defined [here](./docs/coco.md). For COCO Evaluation, please use these instead: [Official](https://github.com/cocodataset/cocoapi) or my [fork](https://github.com/levan92/cocoapi).
 
 ## Install
 
@@ -169,6 +169,3 @@ python3 -m cocojson.run.log2coco -h
 
 _TODO_
 
-### COCO Eval
-
-Please use https://github.com/levan92/cocoapi.
