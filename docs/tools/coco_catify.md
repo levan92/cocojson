@@ -14,6 +14,8 @@ Define mapping (old to new, new being coco classes):
             "2": 9
         }
 
+Note: Annotations with original categories not in the mapping json will be removed.  
+
 ## Usage
 
 ```bash
