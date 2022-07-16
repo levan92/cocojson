@@ -7,10 +7,14 @@ Utility functions for COCO json annotation format. The COCO Format is defined [h
 - `cocojson` is available on [pypi](https://pypi.org/project/cocojson/0.1.1/) through `pip3 install cocojson`
 - or if you prefer, clone this repo and it can be installed through `pip3 install -e .` (editable install) or `pip3 install .` as well.
 
+## Organisation 
+
+- Codes to "Utility Tools" can be found in [./cocojson/tools](https://github.com/levan92/cocojson/tree/main/cocojson/tools).
+- Codes to "Converters" can be found in [./cocojson/convert](https://github.com/levan92/cocojson/tree/main/cocojson/convert).
+
 ## Usage
 
 Please click into each for more details (if applicable). Links works only if you're viewing from the [github homepage](https://github.com/levan92/cocojson).
-
 
 ### Utility Tools
 
