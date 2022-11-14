@@ -82,6 +82,14 @@ Merges multiple datasets
 python3 -m cocojson.run.merge_from_file -h
 ```
 
+#### [Merge JSONs](./docs/tools/merge_jsons.md)
+
+Merges multiple coco jsons. 
+
+```bash
+python3 -m cocojson.run.merge_jsons -h 
+```
+
 #### [Prune Ignores](./docs/tools/ignore_prune.md)
 
 Remove images annotated with certain "ignore" category labels. This is usually used for removing rubbish images that are pointed out by annotators to ignore frame.
