@@ -84,7 +84,7 @@ def merge(jsons, img_roots, output_dir, cids=None, outname="merged"):
             merged_dict["images"].append(img)
 
         for annot in cocodict["annotations"]:
-            if cids is not None and cat["id"] not in cids_to_merge:
+            if cids is not None and annot["category_id"] not in cids_to_merge:
                 continue
             annot["id"] = current_annot_id
             current_annot_id += 1
